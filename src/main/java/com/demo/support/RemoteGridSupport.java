@@ -17,18 +17,18 @@ public class RemoteGridSupport extends DriverScript {
     public static String SELENOID_PORT = "4444";
 
     public static void setUp(String browser, String methodName) {
-    	GRID_REMOTE_URL = "http://" + SELENOID_IP + ":" + SELENOID_PORT + "/wd/hub";
+        GRID_REMOTE_URL = "http://" + SELENOID_IP + ":" + SELENOID_PORT + "/wd/hub";
         System.out.println(GRID_REMOTE_URL);
         DesiredCapabilities cap = new DesiredCapabilities();
         cap.setCapability("name", methodName);
         cap.setCapability("enableVNC", true);
 
         if (browser.toUpperCase().equals("CHROME")) {
-        	System.out.println("Chrome running in grid..");
+            System.out.println("Chrome running in grid..");
             WebDriverManager.chromedriver().setup();
             cap.setCapability(CapabilityType.BROWSER_NAME, BrowserType.CHROME);
         } else if (browser.toUpperCase().equals("FIREFOX")) {
-        	System.out.println("Firfox running in grid..");
+            System.out.println("Firfox running in grid..");
             WebDriverManager.firefoxdriver().setup();
             cap.setCapability(CapabilityType.BROWSER_NAME, BrowserType.FIREFOX);
         }
